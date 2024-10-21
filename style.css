@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b0c10;
+    background-image: url('dark-texture.jpg'); 
+    background-size: cover;
+    color: #e0e0e0;
+    font-family: 'Cinzel', serif;
+    cursor: none; 
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    top: 20%;
+}
+
+
+.glitch-title {
+    font-size: 4em;
+    color: #e0e0e0;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8), 
+        0 0 20px rgba(255, 0, 95, 0.6), 
+        0 0 30px rgba(255, 0, 95, 0.8); 
+    position: relative;
+    text-transform: uppercase;
+    animation: glitch 2s infinite alternate;
+}
+
+.glitch-title:before, .glitch-title:after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    color: #ff004c;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch-title:before {
+    animation: glitchTop 2s infinite alternate;
+}
+
+.glitch-title:after {
+    animation: glitchBottom 2s infinite alternate;
+    color: cyan;
+}
+
+.lyrics p {
+    font-size: 1.5em;
+    line-height: 1.8em;
+    color: #d1d1d1;
+    text-shadow: 0 0 15px rgba(255, 0, 95, 0.7);
+    animation: fade-in 3s ease-out forwards;
+    opacity: 0;
+}
+
+#cursorSigil {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    z-index: 1000;
+    filter: drop-shadow(0 0 10px #ff004c);
+    transform: translate(-50%, -50%);
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(2px, -2px); }
+    80% { transform: translate(5px, 5px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitchTop {
+    0% { clip: rect(0, 900px, 0, 0); }
+    20% { clip: rect(20px, 900px, 85px, 0); }
+    40% { clip: rect(120px, 900px, 140px, 0); }
+    60% { clip: rect(90px, 900px, 150px, 0); }
+    80% { clip: rect(85px, 900px, 100px, 0); }
+    100% { clip: rect(0, 900px, 0, 0); }
+}
+
+@keyframes glitchBottom {
+    0% { clip: rect(0, 900px, 0, 0); }
+    20% { clip: rect(120px, 900px, 140px, 0); }
+    40% { clip: rect(20px, 900px, 85px, 0); }
+    60% { clip: rect(85px, 900px, 100px, 0); }
+    80% { clip: rect(90px, 900px, 150px, 0); }
+    100% { clip: rect(0, 900px, 0, 0); }
+}
